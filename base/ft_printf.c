@@ -1,30 +1,37 @@
-#include "libft.h"
-
-typedef struct	specificator_list
-{
-	char	*param;
-	char	*flags;
-	int		width;
-	int		precision;
-	int		length;
-	char	*type;
-	
-}				spec;
+#include "../includes/ft_printf.h"
 
 //%[parameter][flags][width][.precision][length]type
 int ft_printf(const char *format, ...)
 {
 	char		*p_n;
 	char		*line;	
-	char		*reminder;
+	s_modif		flag;
+	va_list		args;
+	int			num;
+	int			start;
 
+	start = 0;
+	va_start(args, format);
+//	num = va_arg(args, int);	
+//	printf("%d\n", num);
 	line = ft_strdup(format);
-	if ((p_n = ft_strchr(line, '%')))
+	while (*line)
 	{
-		*p_n = '\0';
-		reminder = ft_strdup(++p_n);
+		if ((p_n = ft_strchr(line, '%')))
+		{
+			*p_n = '\0';
+			flag = ft_parser(++p_n, args, &start);
+		}
+		ft_putstr(line);
+		start++;
+		ft_copysrc(line, &p_n[start]);
+		start = 0;
 	}
-	ft_putstr(line);
+	printf("flag.flag: %d\n", flag.flag);
+    printf("flag.width: %d\n", flag.width);
+//    printf("flag.width: %d\n", flag.width);
+    printf("flag.precision: %d\n", flag.precision);
+    printf("flag.type: %c\n", flag.type);
 	
 	return (1);
 }
@@ -39,10 +46,3 @@ int ft_printf(const char *format, ...)
 -длина
 -тип
 */
-int main(void)
-{
-	int i = 5234;
-	ft_printf("hello world%d", 123);	
-	printf("\nМодификатор ширины поля: %07d\n",i);
-	printf("\nМодификатор ширины поля: %70d\n",i);
-}
