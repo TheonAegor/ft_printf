@@ -6,7 +6,7 @@
 /*   By: taegor <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 18:08:46 by taegor            #+#    #+#             */
-/*   Updated: 2020/11/21 18:08:47 by taegor           ###   ########.fr       */
+/*   Updated: 2021/01/14 23:18:49 by taegor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void				*ft_memmove(void *dst, const void *src,
 		size_t len);
 void				*ft_memset(void *b, int c, size_t len);
 void				ft_putchar(char c);
-void				ft_putstr(char *s);
+int					ft_putstr(char *s);
 char				*ft_strchr(const char *s, int c);
 char				*ft_strdup(const char *s);
 char				*ft_strtrim(const char *s, char *set);
