@@ -18,5 +18,7 @@ int main(void)
 	printf("mine:%d\n\n", result);
 	result = printf("hello%.50s\n%d%x%c", "crazy", x,x, 'X');
 	printf("original:%d\n", result);
+	printf("La-La%%%d\n", 12);
+	ft_printf("hello");
 
 }
