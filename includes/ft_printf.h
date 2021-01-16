@@ -5,6 +5,13 @@
 #include "ft_parser.h"
 
 int		ft_copysrc(char *dst, char *src);
-int		ft_processor(s_modif *flag, va_list args);
-void	ft_putnbr_u(unsigned x, int fd);
+int		ft_processor(s_modif *flag, va_list args, int *res);
+int		ft_putnbr_u(unsigned x);
+int		ft_find_tens(unsigned long x);
+int		ft_proc_hex(unsigned long x, int *res, s_modif *flag);
+int		ft_find_sixteens(unsigned long x);
+int		ft_proc_p(unsigned long x, int *res, s_modif *flag);
+int		ft_proc_s(char *str, int *res, s_modif *flag);
+int		ft_proc_c(char *c, int *res, s_modif *flag);
+
 #endif

@@ -24,10 +24,12 @@ int		ft_proc_hex(unsigned long x, int *res, s_modif *flag)
 	unsigned long int			tmp;
 
 	category = ft_find_sixteens(x);
-	flag->variable = malloc(sizeof(char)* category + 1);
+	flag->variable = ft_calloc(sizeof(char), category + 1);
 	flag->variable[category--] = '\0';
+	printf("category:%ld\n", category);
 	while (category >= 0 )
 	{
+		printf("%ld\n", x);
 		tmp = x % 16;
 		if (tmp < 10)
 			flag->variable[category--] = tmp + 48; 

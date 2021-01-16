@@ -13,8 +13,6 @@ int ft_printf(const char *format, ...)
 
 	start = 0;
 	va_start(args, format);
-//	num = va_arg(args, int);	
-//	printf("%d\n", num);
 	line = ft_strdup(format);
 	res = 0;
 	while (*line)
@@ -27,31 +25,15 @@ int ft_printf(const char *format, ...)
 		else
 		{
 			res += ft_putstr(line);
+			printf("flag.variable:%s\n", flag.variable);
 			return(res);
 		}	
 		res += ft_putstr(line);
-		ft_processor(&flag, args);
+//		printf("\nres =%d\n", res);
+		ft_processor(&flag, args, &res);
 		start++;
 		ft_copysrc(line, &p_n[start]);
 		start = 0;
 	}
-/*
-	printf("flag.flag: %d\n", flag.flag);
-    printf("flag.width: %d\n", flag.width);
-    printf("flag.precision: %d\n", flag.precision);
-    printf("flag.type: %c\n", flag.type);
-*/
-	
-	return (1);
+	return (res);
 }
-
-/*
-Объект: то что нужно напечатать
-Свойства:
--параметр
--флаг
--ширина
--точность
--длина
--тип
-*/

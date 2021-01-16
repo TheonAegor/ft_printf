@@ -9,13 +9,13 @@ int		ft_processor(s_modif *flag, va_list args, int *res)
 	if (flag->type == 'u')
 		*res = ft_putnbr_u(va_arg(args, unsigned int));
 	if (flag->type == 'c')
-		*res = ft_putchar(va_arg(args, int));
+		ft_proc_c(va_arg(args, char*), res, flag);
 	if (flag->type == 's')
-		*res = ft_putstr(va_arg(args, char*));
+		ft_proc_s(va_arg(args, char*), res, flag);
 	if (flag->type == 'x' || flag->type == 'X')
 		ft_proc_hex(va_arg(args, long unsigned), res, flag);
 	if (flag->type == 'p')
-//		ft_proc_p(va_arg(args, unsigned long int), res, flag);
+		ft_proc_p(va_arg(args, unsigned long int), res, flag);
 	return (*res);
 }
 /*

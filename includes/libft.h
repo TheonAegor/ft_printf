@@ -6,7 +6,7 @@
 /*   By: taegor <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 18:08:46 by taegor            #+#    #+#             */
-/*   Updated: 2021/01/14 23:18:49 by taegor           ###   ########.fr       */
+/*   Updated: 2021/01/16 11:48:44 by taegor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void				*ft_memccpy(void *dst, const void *src,
 void				*ft_memmove(void *dst, const void *src,
 		size_t len);
 void				*ft_memset(void *b, int c, size_t len);
-void				ft_putchar(char c);
+int					ft_putchar(char c);
 int					ft_putstr(char *s);
 char				*ft_strchr(const char *s, int c);
 char				*ft_strdup(const char *s);
@@ -58,7 +58,7 @@ char				*ft_strmapi(char const *s,
 		char (*f)(unsigned int, char));
 void				ft_putchar_fd(char c, int fd);
 void				ft_putstr_fd(char *s, int fd);
-void				ft_putnbr_fd(int n, int fd);
+int					ft_putnbr_fd(int n);
 void				ft_putendl_fd(char *s, int fd);
 int					ft_strncmp(const char *s1, const char *s2,
 		size_t n);

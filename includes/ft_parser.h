@@ -8,7 +8,7 @@ typedef struct		t_modif
 	int		width; //digit
 	int		flag; //-,0
 	int		varg;
-	
+	char	*variable;
 }					s_modif;
 
 s_modif		ft_parser(char *format, va_list args, int *i);
