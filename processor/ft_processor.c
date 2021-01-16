@@ -1,41 +1,36 @@
 #include "../includes/ft_printf.h"
 
-void	ft_print_hex(int x);
+int		ft_print_hex(unsigned x, int *res);
 	
-int		ft_processor(s_modif *flag, va_list args)
+int		ft_processor(s_modif *flag, va_list args, int *res)
 {
-	int		p;
-
 	if (flag->type == 'd' || flag->type == 'i')
-		ft_putnbr_fd(va_arg(args, int), 1);
+		*res = ft_putnbr_fd(va_arg(args, int));
 	if (flag->type == 'u')
-		ft_putnbr_u(va_arg(args, unsigned int), 1);
+		*res = ft_putnbr_u(va_arg(args, unsigned int));
 	if (flag->type == 'c')
-		ft_putchar(va_arg(args, int));
+		*res = ft_putchar(va_arg(args, int));
 	if (flag->type == 's')
-		ft_putstr(va_arg(args, char*));
+		*res = ft_putstr(va_arg(args, char*));
 	if (flag->type == 'x' || flag->type == 'X')
-		ft_print_hex(va_arg(args, int));
+		ft_proc_hex(va_arg(args, long unsigned), res, flag);
 	if (flag->type == 'p')
-		;
-	return (1);
+//		ft_proc_p(va_arg(args, unsigned long int), res, flag);
+	return (*res);
 }
-
-void	ft_print_hex(int x)
+/*
+int		ft_print_hex(unsigned x, int *res)
 {
+//	x < 0 ? x = (unsigned)x * (1) : (x = (unsigned)x);
 	if (x >= 16)
 	{
-		ft_print_hex(x/16);
-		ft_print_hex(x%16);
+		ft_print_hex(x/16, res);
+		ft_print_hex(x%16, res);
 	}
 	if (x < 10)
-	{
-		ft_putchar(x^48);
-		return ;
-	}
+		*res += ft_putchar(x^48);
 	if (x >= 10 && x <= 15)
-	{
-		ft_putchar(((x + 1) % 10) | 48 ^ 80 );
-		return ;
-	}
+		*res += ft_putchar(((x + 1) % 10) | 48 ^ 80 );
+	return *res;
 }
+*/
