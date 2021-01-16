@@ -13,10 +13,10 @@ int main(void)
 */
 	pres = &result;
 
-	x = 203324;
-	result = ft_printf("hello%c\n", 'c');
+	x = 214748;
+	result = ft_printf("hello%.50s\n%d%x%c", "crazy", x,x, 'X');
 	printf("mine:%d\n\n", result);
-	result = printf("hello%c\n", 'c');
+	result = printf("hello%.50s\n%d%x%c", "crazy", x,x, 'X');
 	printf("original:%d\n", result);
 
 }

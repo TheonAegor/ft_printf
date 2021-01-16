@@ -5,9 +5,9 @@ int		ft_print_hex(unsigned x, int *res);
 int		ft_processor(s_modif *flag, va_list args, int *res)
 {
 	if (flag->type == 'd' || flag->type == 'i')
-		*res = ft_putnbr_fd(va_arg(args, int));
+		ft_proc_d(va_arg(args, int), res, flag);
 	if (flag->type == 'u')
-		*res = ft_putnbr_u(va_arg(args, unsigned int));
+		ft_proc_u(va_arg(args, unsigned long int), res, flag);
 	if (flag->type == 'c')
 		ft_proc_c(va_arg(args, char*), res, flag);
 	if (flag->type == 's')

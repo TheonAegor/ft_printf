@@ -13,5 +13,7 @@ int		ft_find_sixteens(unsigned long x);
 int		ft_proc_p(unsigned long x, int *res, s_modif *flag);
 int		ft_proc_s(char *str, int *res, s_modif *flag);
 int		ft_proc_c(char *c, int *res, s_modif *flag);
+int		ft_proc_u(unsigned long int x, int *res, s_modif *flag);
+int		ft_proc_d(int x, int *res, s_modif *flag);
 
 #endif
