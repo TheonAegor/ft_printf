@@ -133,10 +133,10 @@ int main(void)
 	while (i < 5)
 	{
 		iterator = arr[i];
-		result = ft_printf("%.1d", iterator);
-		printf("1)mine:%d\n", result);
-		result = printf("%.1d", iterator);
-		printf("2)original:%d\n\n", result);
+		result = ft_printf("%.d", iterator);
+		printf("(1)mine:%d\n", result);
+		result = printf("%.d", iterator);
+		printf("(2)original:%d\n\n", result);
 		i++;
 	}
 

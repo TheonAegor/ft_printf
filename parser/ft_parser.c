@@ -6,7 +6,7 @@
 /*   By: taegor <taegor@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 16:29:48 by taegor            #+#    #+#             */
-/*   Updated: 2021/01/17 23:59:05 by taegor           ###   ########.fr       */
+/*   Updated: 2021/01/18 01:13:20 by taegor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,56 +26,47 @@ int		parse_precision(char *format, int *i, va_list args, s_modif *flag)
 	int star;
 
 	star = 0;
-	if (ft_isdigit(format[*i]) && !flag->precision)
+	if (format[*i] == '*')
+	{
+		flag->precision = va_arg(args, int);
+		if (flag->precision < 0)
+			flag->precision = -1;
+		++*i;
+	}
+	else if (ft_isdigit(format[*i]) && !flag->precision)
 	{
 		flag->width = ft_atoi(&format[*i]);
-	}
-	while(ft_isdigit(format[*i]))
-		++*i;
-//	printf("\ni=%d\n", *i);
-	if (format[*i] == '.')
-	{
-		if (flag->flag == 2)
-			flag->flag = 0;
-		++*i;
-		if (format[*i] == '*')
-		{
-			star++;
-			if (star == 1)
-				flag->precision = va_arg(args, int);
+		while(ft_isdigit(format[*i]))
 			++*i;
-		}
-		if (ft_isdigit(format[*i]))
-			flag->precision = ft_atoi(&format[*i]);	
 	}
 	return (1);
 }
 
 int		parse_flags(char *format, int *i, va_list args, s_modif *flag)
 {
-	int		star;
-
-	star = 0;
-	while (format[*i] == '-' || format[*i] == '0' || format[*i] == '*')
+	while (format[*i] == '-' || format[*i] == '0')
 	{
-		while (format[*i] == '-')
-		{                 
+		if (format[*i] == '-')
 			flag->flag = 1;
-			++*i;
-		}
-		while (format[*i] == '0')
+		if (format[*i] == '0' && flag->flag != 1)
+			flag->flag = 2;
+		++*i;
+	}
+	if (format[*i] == '*')
+	{
+		flag->width = va_arg(args, int);
+		if (flag->width < 0)
 		{
-			if (flag->flag != 1)
-				flag->flag = 2;
-			++*i;
+			flag->flag = 1;
+			flag->width = flag->width * (-1);
 		}
-		if (format[*i] == '*')
-		{
-			star++;
-			if (star == 1)
-				flag->width = va_arg(args, int);
+		++*i;
+	}
+	else if (ft_isdigit(format[*i]))
+	{
+		flag->width = ft_atoi(&format[*i]);
+		while (ft_isdigit(format[*i]))
 			++*i;
-		}
 	}
 	return (1);
 }
@@ -105,15 +96,15 @@ int		ft_parser(char *format, va_list args, int *i, s_modif *flag)
 //	printf("\nress = %d\n", *i);
 //	printf("line__=%d\n", format[*i]);
 	++*i;
-	while (!ft_istype(format, *i) && format[*i])
+	parse_flags(format, i, args, flag);
+	if (format[*i] == '.')
 	{
-//		printf("line__=%d\n", format[*i]);
-		parse_flags(format, i, args, flag);
+		++*i;
 		parse_precision(format, i, args, flag);
 	}
-	if (!(ft_istype(format, *i)) && format[*i] != '\0')
+	flag->type = format[*i];
+	if (ft_istype(format, *i) == 0 && flag->type == '\0')
 		return (-1);
-	flag->type = format[(*i)++];
 //	printf("\nparser\n");
 //	printf("i=%d\n", *i);
 /*
