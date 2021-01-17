@@ -4,6 +4,10 @@ int		ft_print_hex(unsigned x, int *res);
 	
 int		ft_processor(s_modif *flag, va_list args, int *res)
 {
+	int change;
+	
+	change = *res;
+//	printf("res_b%d\n", *res);
 	if (flag->type == 'd' || flag->type == 'i')
 		ft_proc_d(va_arg(args, int), res, flag);
 	if (flag->type == 'u')
@@ -16,6 +20,14 @@ int		ft_processor(s_modif *flag, va_list args, int *res)
 		ft_proc_hex(va_arg(args, long unsigned), res, flag);
 	if (flag->type == 'p')
 		ft_proc_p(va_arg(args, unsigned long int), res, flag);
+/*	
+ 	printf("var=%s\n", flag->variable);
+	if (*res != change)
+		*res = *res - (*res - change);
+	printf("res_proc=%d\n", flag->result);
+	printf("res_b%d\n", *res);
+	printf("change=%d\n", change);
+*/
 	return (*res);
 }
 /*

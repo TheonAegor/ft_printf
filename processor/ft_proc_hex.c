@@ -1,23 +1,5 @@
 #include "../includes/ft_printf.h"
 
-/*
-{
-	static int res;
-
-	res = 0;
-	if (x >= 16)
-	{
-		ft_print_hex(x/16);
-		ft_print_hex(x%16);
-	}
-	if (x < 10)
-		res += ft_putchar(x^48);
-	if (x >= 10 && x <= 15)
-		res += ft_putchar(((x + 1) % 10) | 48 ^ 80 );
-	return res;
-}
-*/
-
 int		ft_proc_hex(unsigned long x, int *res, s_modif *flag)
 {
 	long long int	category;
@@ -33,7 +15,7 @@ int		ft_proc_hex(unsigned long x, int *res, s_modif *flag)
 			flag->variable[category--] = tmp + 48; 
 		if (tmp >= 10 && tmp <= 15)
 			flag->variable[category--] = ((tmp + 1) % 10) | 48 ^ 80; 
-		++*res;
+		flag->result++;	
 		x = x / 16;
 	}
 	return (1);

@@ -1,98 +1,120 @@
 #include "../includes/ft_printf.h"
 
+int		init_delete(s_modif *flag, int i)
+{
+	if (i == 1)
+	{
+		flag->flag = 0;
+		flag->width = 0;
+		flag->precision = 0;
+		flag->type = 0;
+		flag->result = 0;
+		flag->variable = 0;
+	}
+	else
+	{
+		flag->flag = 0;
+		flag->width = 0;
+		flag->precision = 0;
+		flag->variable = 0;
+		if (flag->type != '%')
+//			free(flag->variable);
+		flag->type = 0;
+	}
+}
 int		ft_print_precision(s_modif flag, int *res, int *tmp)
 {
 	int i;
-//	printf("prec=%d\n", flag.precision);
+	int len;
 	i = 0;
-	if (flag.precision > *res && flag.type == 's')
+	len = ft_strlen(flag.variable);
+	if (flag.type == 's')
 	{
-		*tmp -= *res;
-		while(flag.variable[i])
-			*tmp += ft_putchar(flag.variable[i++]);			
+		if (flag.precision >= len)
+		{
+			while(flag.variable[i])
+				*tmp += ft_putchar(flag.variable[i++]);			
+		}
+		else if (flag.precision < len && flag.precision > 0)
+		{
+			while(flag.precision-- > 0)
+				*tmp += ft_putchar(flag.variable[i++]);			
+		}
+		else
+			*tmp += ft_putstr(flag.variable);
 	}
-	else if (flag.precision < *res && flag.type == 's')
+	else
 	{
-		*tmp -= *res;
-		while(flag.precision-- > 0)
-			*tmp += ft_putchar(flag.variable[i++]);			
-	}
-	if (flag.precision > *res && flag.type != 's')
-	{
-		while(flag.precision-- - *res > 0)
+		while(flag.precision-- - len > 0)
 			*tmp += ft_putchar('0');
 		ft_putstr(flag.variable);
 	}
-	*res += *tmp;
-	return (1);
+	return (*tmp);
 }
 
-int		ft_print_with_flags(s_modif flag, int *res, char *line)
+int		ft_print_with_flags(s_modif *flag, int *res, char *line)
 {
 	int tmp;
-//	printf("res=%d\n", res);
-//	printf("flag.width=%d\n", flag.width);
-//	printf("flag.flag=%d\n", flag.flag);
+	int len;
 
 	tmp = 0;
-	tmp = ft_putstr(line);
-	
-	if (flag.width > 0 && *res < flag.width && flag.flag == 1)
+	len = ft_strlen(flag->variable);
+//	printf("\nlen=%d\n", len);
+	if (flag->type == '%')
 	{
-		ft_putstr(flag.variable);
-		while(flag.width-- - *res > 0)
-			tmp += ft_putchar(' ');			
+		flag->result += ft_putchar('%');
+		return (0);	
 	}
-	else if (flag.width > 0 && *res < flag.width && flag.flag == 2)
+	if (flag->width > len && flag->precision == 0)
 	{
-		while(flag.width-- - *res > 0)
-			tmp += ft_putchar('0');			
-		ft_putstr(flag.variable);
-	}
-	if (flag.flag == 0 && flag.type != 's' && flag.precision == 0)
-	{
-		while(flag.width-- - *res > 0)
-			tmp += ft_putchar(' ');			
-		ft_putstr(flag.variable);
-	}
-//	printf("tmp=%d\n", tmp);
-	ft_print_precision(flag, res, &tmp);
-	return (1);
-}
-
-//%[parameter][flags][width][.precision][length]type
-int ft_printf(const char *format, ...)
-{
-	char		*p_n;
-	char		*line;	
-	s_modif		flag;
-	va_list		args;
-	int			start;
-	int			res;
-
-	start = 0;
-	va_start(args, format);
-	line = ft_strdup(format);
-	res = 0;
-	while (*line)
-	{
-		if ((p_n = ft_strchr(line, '%')))
+		if (flag->flag == 1)
 		{
-			*p_n = '\0';
-			flag = ft_parser(++p_n, args, &start);
+			ft_putstr(flag->variable);
+			while(flag->width-- - len > 0)
+				tmp += ft_putchar(' ');	
+		}
+		else if (flag->flag == 2 && flag->precision <= 0)
+		{
+			while(flag->width-- - len > 0)
+				tmp += ft_putchar('0');			
+			ft_putstr(flag->variable);
 		}
 		else
 		{
-			ft_print_with_flags(flag, &res, line);
-			res += ft_putstr(line);
-			return(res);
-		}	
-		ft_processor(&flag, args, &res);
-//		printf("res=%d\n", res);
-		ft_print_with_flags(flag, &res, line);
-		start++;
-		ft_copysrc(line, &p_n[start]);
-		start = 0;
+			while(flag->width-- - len > 0)
+				tmp += ft_putchar(' ');	
+			ft_putstr(flag->variable);
+		}
 	}
-	return (res);
+	else
+		ft_print_precision(*flag, res, &tmp);
+	flag->result = flag->result + tmp;
+	init_delete(flag, 0);
+	return (tmp);
+}
+
+int ft_printf(const char *format, ...)
+{
+	char		*line;	
+	s_modif		flag;
+	va_list		args;
+	int			i;
+
+	i = 0;
+	init_delete(&flag, 1);
+	va_start(args, format);
+	line = ft_strdup(format);
+	while (line[i])
+	{
+		if ((ft_parser(line, args, &i, &flag)) < 0)
+			return (-1);
+		printf("\nhere\n");
+		printf("\nline[i]=%d\n", line[i]);
+		if (line[i] && ft_processor(&flag, args, &i) > 0)
+		{
+			ft_print_with_flags(&flag, &i, line);
+		}
+	}
+	va_end(args);
+	return (flag.result);
 }

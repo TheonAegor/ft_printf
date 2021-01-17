@@ -25,5 +25,7 @@ static unsigned	ft_sqrt(unsigned long num, unsigned i)
 
 int				ft_find_tens(unsigned long int x)
 {
+	if (x == 0)
+		return (1);
 	return (ft_tens(x));
 }
