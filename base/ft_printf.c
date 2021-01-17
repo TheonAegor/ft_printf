@@ -18,7 +18,7 @@ int		init_delete(s_modif *flag, int i)
 		flag->precision = 0;
 		flag->variable = 0;
 		if (flag->type != '%')
-//			free(flag->variable);
+			free(flag->variable);
 		flag->type = 0;
 	}
 }
@@ -45,9 +45,13 @@ int		ft_print_precision(s_modif flag, int *res, int *tmp)
 	}
 	else
 	{
+	//	printf("\nhere\n");
 		while(flag.precision-- - len > 0)
 			*tmp += ft_putchar('0');
-		ft_putstr(flag.variable);
+	//	printf("\nfv=%s|\n", flag.variable);
+	//	printf("%d\n",
+		if ((flag.variable != "0") && (flag.precision != 0))
+			ft_putstr(flag.variable);
 	}
 	return (*tmp);
 }
@@ -87,8 +91,12 @@ int		ft_print_with_flags(s_modif *flag, int *res, char *line)
 		}
 	}
 	else
+	{
 		ft_print_precision(*flag, res, &tmp);
+	}
 	flag->result = flag->result + tmp;
+//	printf("\nhere\n");
+//	printf("\nfv=%s|\n", flag->variable);
 	init_delete(flag, 0);
 	return (tmp);
 }
@@ -104,16 +112,15 @@ int ft_printf(const char *format, ...)
 	init_delete(&flag, 1);
 	va_start(args, format);
 	line = ft_strdup(format);
+	//printf("\nline[i]=%d\n", line[i]);
 	while (line[i])
 	{
 		if ((ft_parser(line, args, &i, &flag)) < 0)
 			return (-1);
-		printf("\nhere\n");
-		printf("\nline[i]=%d\n", line[i]);
-		if (line[i] && ft_processor(&flag, args, &i) > 0)
-		{
-			ft_print_with_flags(&flag, &i, line);
-		}
+		if (ft_processor(&flag, args, &i) < 0)
+			return (-1);
+//		printf("\nline[i]=%d\n", line[i]);
+		ft_print_with_flags(&flag, &i, line);
 	}
 	va_end(args);
 	return (flag.result);

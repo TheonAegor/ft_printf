@@ -13,8 +13,10 @@ int		ft_proc_hex(unsigned long x, int *res, s_modif *flag)
 		tmp = x % 16;
 		if (tmp < 10)
 			flag->variable[category--] = tmp + 48; 
-		if (tmp >= 10 && tmp <= 15)
+		if (tmp >= 10 && tmp <= 15 && flag->type == 'x')
 			flag->variable[category--] = ((tmp + 1) % 10) | 48 ^ 80; 
+		else if (tmp >= 10 && tmp <= 15 && flag->type == 'X')
+			flag->variable[category--] = ((tmp + 1) % 10) | 48 ^ 112; 
 		flag->result++;	
 		x = x / 16;
 	}

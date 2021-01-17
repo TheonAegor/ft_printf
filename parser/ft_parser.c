@@ -6,7 +6,7 @@
 /*   By: taegor <taegor@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 16:29:48 by taegor            #+#    #+#             */
-/*   Updated: 2021/01/17 21:46:37 by taegor           ###   ########.fr       */
+/*   Updated: 2021/01/17 23:59:05 by taegor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,12 @@ int		parse_precision(char *format, int *i, va_list args, s_modif *flag)
 
 	star = 0;
 	if (ft_isdigit(format[*i]) && !flag->precision)
+	{
 		flag->width = ft_atoi(&format[*i]);
+	}
 	while(ft_isdigit(format[*i]))
 		++*i;
+//	printf("\ni=%d\n", *i);
 	if (format[*i] == '.')
 	{
 		if (flag->flag == 2)
@@ -60,9 +63,10 @@ int		parse_flags(char *format, int *i, va_list args, s_modif *flag)
 			flag->flag = 1;
 			++*i;
 		}
-		while (format[*i] == '0' && flag->flag != 1)
+		while (format[*i] == '0')
 		{
-			flag->flag = 2;
+			if (flag->flag != 1)
+				flag->flag = 2;
 			++*i;
 		}
 		if (format[*i] == '*')
@@ -80,6 +84,7 @@ int		parse_format(char *format, int *i, s_modif *flag)
 {
 	int count;
 	count = 0;
+	//printf("line__=%d\n", format[*i]);
 	while (format[*i] && format[*i] != '%')
 	{
 		ft_putchar(format[*i]);
@@ -98,21 +103,24 @@ int		ft_parser(char *format, va_list args, int *i, s_modif *flag)
 	if ((j = parse_format(format,i, flag)) < 0)
 		return(-1);
 //	printf("\nress = %d\n", *i);
+//	printf("line__=%d\n", format[*i]);
 	++*i;
 	while (!ft_istype(format, *i) && format[*i])
 	{
+//		printf("line__=%d\n", format[*i]);
 		parse_flags(format, i, args, flag);
 		parse_precision(format, i, args, flag);
 	}
-	if (ft_istype(format, *i))
-		flag->type = format[(*i)++];
+	if (!(ft_istype(format, *i)) && format[*i] != '\0')
+		return (-1);
+	flag->type = format[(*i)++];
 //	printf("\nparser\n");
 //	printf("i=%d\n", *i);
-	printf("type=%c\n", flag->type);
+/*
+	printf("\ntype=%c\n", flag->type);
 	printf("flag=%d\n", flag->flag);
 	printf("width=%d\n", flag->width);
 	printf("prec=%d\n", flag->precision);
-/*
 	printf("\nres = %d\n", *i);
 */
 

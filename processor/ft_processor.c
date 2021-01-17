@@ -22,6 +22,7 @@ int		ft_processor(s_modif *flag, va_list args, int *res)
 		ft_proc_p(va_arg(args, unsigned long int), res, flag);
 /*	
  	printf("var=%s\n", flag->variable);
+	printf("in_proc%d\n", *res);
 	if (*res != change)
 		*res = *res - (*res - change);
 	printf("res_proc=%d\n", flag->result);

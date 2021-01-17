@@ -1,4 +1,4 @@
-#include "./includes/ft_printf.h"
+#	include "./includes/ft_printf.h"
 
 	enum ints {max = 2147483647, min = -2147483648, z = 0, o = 1, simple = 234};
 	enum chars {a = 97, A = 65, one = 49, question = 64}; 
@@ -22,12 +22,13 @@ int main(void)
 	while (i < 5)
 	{
 		iterator = arr[i];
-		result = ft_printf("%10d\t", iterator);
+		result = ft_printf("%10d", iterator);
 		printf("1)mine:%d\n", result);
-		result = printf("%10d\t", iterator);
+		result = printf("%10d", iterator);
 		printf("2)original:%d\n\n", result);
 		i++;
 	}
+*/
 	printf("=============================TEST HEX======================\n");	
 	i = 0;
 	while (i < 5)
@@ -39,6 +40,7 @@ int main(void)
 		printf("2)original:%d\n\n", result);
 		i++;
 	}
+
 	printf("=============================TEST UNSIGNED======================\n");	
 	i = 0;
 	while (i < 5)
@@ -83,11 +85,14 @@ int main(void)
 		printf("2)original:%d\n\n", result);
 		i++;
 	}
-*/
 	printf("=============================TEST %%======================\n");	
-	result = ft_printf("%%");
+	result = ft_printf("%%%d", 5);
 	printf("1)mine:%d\n", result);
-	result = printf("%%");
+	result = printf("%%%d", 5);
+	printf("2)original:%d\n\n", result);
+	result = ft_printf("%-05%%d", 5);
+	printf("1)mine:%d\n", result);
+	result = printf("%%%d", 5);
 	printf("2)original:%d\n\n", result);
 	printf("=============================TEST MULTIPLE======================\n");	
 	i = 0;
@@ -100,7 +105,7 @@ int main(void)
 		printf("2)original:%d\n\n", result);
 		i++;
 	}
-/*
+
 	printf("=============================TEST STAR======================\n");	
 	i = 0;
 	while (i < 5)
@@ -112,7 +117,28 @@ int main(void)
 		printf("2)original:%d\n\n", result);
 		i++;
 	}
-*/
+	printf("=============================TEST MISTAKES======================\n");	
+	i = 0;
+	while (i < 5)
+	{
+		iterator = arr[i];
+		result = ft_printf("%d\t", iterator);
+		printf("1)mine:%d\n", result);
+		result = printf("%*.*d\t",2,3, iterator);
+		printf("2)original:%d\n\n", result);
+		i++;
+	}
+	printf("=============================TEST 0======================\n");	
+	i = 0;
+	while (i < 5)
+	{
+		iterator = arr[i];
+		result = ft_printf("%.1d", iterator);
+		printf("1)mine:%d\n", result);
+		result = printf("%.1d", iterator);
+		printf("2)original:%d\n\n", result);
+		i++;
+	}
 
 }
 

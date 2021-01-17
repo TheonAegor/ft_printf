@@ -4,15 +4,12 @@ static int	fill_var(int *category, s_modif *flag, long long int x, int *res)
 {
 	int	tmp;
 
-	if (*category > 0)
-		--*res;
 	while(*category >= 0)
 	{
 		tmp = x % 10;
 		flag->variable[*category] = tmp + 48; 
 		*category = *category - 1;
 		x = x / 10;
-		++*res;
 		flag->result++;
 	}
 	return (1);
