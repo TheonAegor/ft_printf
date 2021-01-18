@@ -13,7 +13,7 @@ int		ft_processor(s_modif *flag, va_list args, int *res)
 	if (flag->type == 'u')
 		ft_proc_u(va_arg(args, unsigned long int), res, flag);
 	if (flag->type == 'c')
-		ft_proc_c(va_arg(args, char*), res, flag);
+		flag->result += ft_proc_c(va_arg(args, int), res, flag);
 	if (flag->type == 's')
 		ft_proc_s(va_arg(args, char*), res, flag);
 	if (flag->type == 'x' || flag->type == 'X')
