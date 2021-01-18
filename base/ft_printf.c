@@ -51,20 +51,24 @@ int		ft_print_precision(s_modif flag, int *res, int *tmp)
 	//	printf("\nfv=%s|\n", flag.variable);
 	//	printf("%d\n",
 		if (flag.variable == NULL && (flag.precision == 0))
-			return (tmp);
+			return (*tmp);
 		ft_putstr(flag.variable);
 	}
 	return (*tmp);
 }
 
-int		if_zero(s_modif *flag)
+int		ft_write(s_modif *flag, char *line, int *i)
 {
-	if (flag->width < 0)
-		flag->width = (unsigned)flag->width * (-1);
-	if (flag->precision < 0)
-		flag->precision = -1;
-	return (1);	
-}
+	while (line[*i] != '%' && line[*i])
+	{
+		ft_putchar(line[*i]);
+		flag->result++;
+		++*i;
+	}
+	if (line[*i] == '\0')
+		return (0);
+	return (1);
+}	
 
 int		ft_print_with_flags(s_modif *flag, int *res, char *line)
 {
@@ -122,12 +126,10 @@ int ft_printf(const char *format, ...)
 	init_delete(&flag, 1);
 	va_start(args, format);
 	line = ft_strdup(format);
-	//printf("\nline[i]=%d\n", line[i]);
-	while (line[i])
+//	printf("\nline[i]=%d\n", line[i]);
+	while (ft_write(&flag, line, &i) == 1)
 	{
-		if ((ft_parser(line, args, &i, &flag)) == -1)
-			return (0);
-		if_zero(&flag);
+		ft_parser(line, args, &i, &flag);
 		if (ft_processor(&flag, args, &i) < 0)
 			return (-1);
 //		printf("\nline[i]=%d\n", line[i]);

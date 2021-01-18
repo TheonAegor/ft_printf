@@ -6,7 +6,7 @@
 /*   By: taegor <taegor@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 16:29:48 by taegor            #+#    #+#             */
-/*   Updated: 2021/01/18 01:13:20 by taegor           ###   ########.fr       */
+/*   Updated: 2021/01/18 21:17:47 by taegor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,28 +71,12 @@ int		parse_flags(char *format, int *i, va_list args, s_modif *flag)
 	return (1);
 }
 
-int		parse_format(char *format, int *i, s_modif *flag)
-{
-	int count;
-	count = 0;
-	//printf("line__=%d\n", format[*i]);
-	while (format[*i] && format[*i] != '%')
-	{
-		ft_putchar(format[*i]);
-		flag->result++;
-		++*i;
-	}
-	return (count);
-}
-
 int		ft_parser(char *format, va_list args, int *i, s_modif *flag)
 {
 	int j;
 
 //	printf("\nress = %d\n", *i);
 //	printf("\nshift = %d\n", j);
-	if ((j = parse_format(format,i, flag)) < 0)
-		return(-1);
 //	printf("\nress = %d\n", *i);
 //	printf("line__=%d\n", format[*i]);
 	++*i;
@@ -105,9 +89,10 @@ int		ft_parser(char *format, va_list args, int *i, s_modif *flag)
 	flag->type = format[*i];
 	if (ft_istype(format, *i) == 0 && flag->type == '\0')
 		return (-1);
+	++*i;
 //	printf("\nparser\n");
-//	printf("i=%d\n", *i);
 /*
+	printf("i=%d\n", *i);
 	printf("\ntype=%c\n", flag->type);
 	printf("flag=%d\n", flag->flag);
 	printf("width=%d\n", flag->width);

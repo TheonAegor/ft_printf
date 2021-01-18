@@ -1,7 +1,7 @@
 #	include "./includes/ft_printf.h"
 
 	enum ints {max = 2147483647, min = -2147483648, z = 0, o = 1, simple = 234};
-	enum chars {a = 97, A = 65, one = 49, question = 64}; 
+	enum chars {a = 97, A = 65, one = 49, question = 64, zer = 0}; 
 
 int main(void)
 {
@@ -12,7 +12,7 @@ int main(void)
 	char *str_1 = "hello";
 	char *strs[] = {str_0, str_1, NULL};
 	char *p_str;
-	enum chars arr_ch[] = {a, A, question, one};
+	enum chars arr_ch[] = {a, A, question, one, zer};
 	enum chars iter;
 	enum ints arr[5] = {o, z, simple, max, min};
 	enum ints iterator;
@@ -28,7 +28,6 @@ int main(void)
 		printf("2)original:%d\n\n", result);
 		i++;
 	}
-*/
 	printf("=============================TEST HEX======================\n");	
 	i = 0;
 	while (i < 5)
@@ -63,9 +62,10 @@ int main(void)
 		printf("2)original:%d\n\n", result);
 		i++;
 	}
+*/
 	printf("=============================TEST CHAR======================\n");	
 	i = 0;
-	while (i < 4)
+	while (i < 5)
 	{
 		iter = arr_ch[i];
 		result = ft_printf("%10c\t", iter);
@@ -74,6 +74,7 @@ int main(void)
 		printf("2)original:%d\n\n", result);
 		i++;
 	}
+/*
 	printf("=============================TEST POINTER======================\n");	
 	i = 0;
 	while (i < 5)
@@ -139,6 +140,7 @@ int main(void)
 		printf("(2)original:%d\n\n", result);
 		i++;
 	}
+*/
 
 }
 

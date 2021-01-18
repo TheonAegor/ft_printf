@@ -11,6 +11,7 @@ SRC :=	./base/ft_printf.c ./base/ft_copysrc.c\
 		./processor/ft_proc_c.c\
 		./processor/ft_proc_u.c\
 		./processor/ft_proc_d.c\
+		./processor/utils.c\
 		./processor/ft_putnbr_u.c	
 
 OBJ := $(SRC:.c=.o)
