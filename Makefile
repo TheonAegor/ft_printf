@@ -2,6 +2,8 @@ NAME = libftprintf.a
 
 SRC :=	./base/ft_printf.c ./base/ft_copysrc.c\
 		./processor/utils.c\
+		./processor/utils_two.c\
+		./processor/ft_itoa_unsigned.c\
 		./parser/ft_parser.c\
 		./processor/ft_processor.c\
 		./processor/ft_find_sixteens.c\

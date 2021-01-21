@@ -12,6 +12,7 @@ int		ft_proc_d(int x, s_modif *flag)
 		*arg = '\0';
 	if ((flag->variable = ft_strdup(arg)) == NULL)
 		return (-1);
+	free(arg);
 	flag->result += ft_strlen(flag->variable);
 	if (flag->precision != -1 && flag->flag == 2)
 		flag->flag = 0;

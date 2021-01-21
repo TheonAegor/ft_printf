@@ -21,9 +21,9 @@ int main(void)
 	while (i < 5)
 	{
 		iterator = arr[i];
-		result = ft_printf("%10.20d", iterator);
+		result = ft_printf("%.10u", iterator);
 		printf("1)mine:%d\n", result);
-		result = printf("%10.20d", iterator);
+		result = printf("%.10u", iterator);
 		printf("2)original:%d\n\n", result);
 		i++;
 	}

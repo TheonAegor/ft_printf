@@ -21,5 +21,7 @@ int 	ft_printzero(int count);
 int 	ft_printprecision(int count);
 int 	ft_calc_flags(s_modif *flag);
 int 	print_flags(s_modif *flag);
+int 	ft_check_minus(s_modif *flag);
+char 	*ft_itoa_unsigned(unsigned long int x);
 
 #endif

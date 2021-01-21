@@ -62,12 +62,10 @@ int print_precision(int count)
 
 int print_flags(s_modif *flag)
 {
-    if (*(flag->variable) == '-')
-    {
-        ft_putchar('-');
-        flag->variable++;
-        flag->precision = flag->precision != 0 ? flag->precision + 1 : flag->precision;
-    }
+	if (flag->precision != 0)
+		flag->precision += ft_check_minus(flag);
+	else
+		ft_check_minus(flag);
     if (flag->flag == 1)
     {
         flag->result += print_precision(flag->precision);

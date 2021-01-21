@@ -1,19 +1,20 @@
 #include "../includes/ft_printf.h"
 
-int		ft_proc_u(unsigned long x, int *res, s_modif *flag)
+int		ft_proc_u(unsigned long x, s_modif *flag)
 {
-	int category;
-	int	tmp;
+	char	*arg;
 
-	category = ft_find_tens(x);
-	flag->variable = ft_calloc(sizeof(char), 2);	
-	flag->variable[category--] = '\0';
-	while(category >= 0)
-	{
-		tmp = x % 10;
-		flag->variable[category--] = tmp + 48; 
-		x = x / 10;
-		flag->result++;
-	}
+	if ((arg = ft_itoa_unsigned(x)) == NULL)
+		return (-1);
+	if (x == 0 && flag->precision == 0)
+		*arg = '\0';
+	if (flag->precision != -1 && flag->flag == 2)
+		flag->flag = 0;
+	if ((flag->variable = ft_strdup(arg)) == NULL)
+		return (-1);
+	free(arg);
+	flag->result += ft_strlen(flag->variable);
+	ft_calc_flags(flag);
+	print_flags(flag);
 	return (1);
 }
