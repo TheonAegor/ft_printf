@@ -1,6 +1,6 @@
 #include "../includes/ft_printf.h"
 
-int		ft_proc_p(unsigned long int x, int *res, s_modif *flag)
+int		ft_proc_p(unsigned long int x, s_modif *flag)
 {
     long long int   category;
     unsigned long int           tmp;
@@ -21,5 +21,7 @@ int		ft_proc_p(unsigned long int x, int *res, s_modif *flag)
     } 
 	flag->variable[category--] = 'x';
 	flag->variable[category] = '0';
+	ft_calc_flags(flag);
+	print_flags(flag);
     return (1);
 }

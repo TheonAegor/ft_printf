@@ -8,6 +8,7 @@ int main(void)
 
 	int result;
 	int i = 0;
+	char *zerro;
 	char *str_0 = "";
 	char *str_1 = "hello";
 	char *strs[] = {str_0, str_1, NULL};
@@ -17,6 +18,7 @@ int main(void)
 	enum ints arr[5] = {o, z, simple, max, min};
 	enum ints iterator;
 
+	zerro = NULL;
 	printf("=============================TEST INT======================\n");	
 	while (i < 5)
 	{
@@ -27,7 +29,6 @@ int main(void)
 		printf("2)original:%d\n\n", result);
 		i++;
 	}
-/*
 	printf("=============================TEST HEX======================\n");	
 	i = 0;
 	while (i < 5)
@@ -40,6 +41,7 @@ int main(void)
 		i++;
 	}
 
+/*
 	printf("=============================TEST UNSIGNED======================\n");	
 	i = 0;
 	while (i < 5)
@@ -73,6 +75,7 @@ int main(void)
 		printf("2)original:%d\n\n", result);
 		i++;
 	}
+*/
 	printf("=============================TEST POINTER======================\n");	
 	i = 0;
 	while (i < 5)
@@ -84,6 +87,7 @@ int main(void)
 		printf("2)original:%d\n\n", result);
 		i++;
 	}
+/*
 	printf("=============================TEST %%======================\n");	
 	result = ft_printf("%%%d", 5);
 	printf("1)mine:%d\n", result);
@@ -139,6 +143,18 @@ int main(void)
 		i++;
 	}
 
+	result = printf("%010.20c|", '-');
+	printf("result:%d\n", result);
+	result = ft_printf("%010.20c|", '-');
+	printf("result:%d\n", result);
+
+	result = printf("%015.2s|", "hello world");
+	printf("result:%d\n", result);
+	result = ft_printf("%015.2s|", "hello world");
+	printf("result:%d\n", result);
+//	result = ft_printf("%010.20s|", "hello world");
+//	printf("result:%d\n", result);
 */
+
 }
 

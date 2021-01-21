@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: taegor <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/21 13:38:47 by taegor            #+#    #+#             */
+/*   Updated: 2021/01/21 13:38:48 by taegor           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/ft_printf.h"
 
 int 	ft_printspace(int count)
@@ -28,6 +40,8 @@ int 	ft_printzero(int count)
 
 int        ft_calc_flags(s_modif *flag)
 {
+	if (flag->type == 'c')
+		flag->precision = 0;
     if (ft_strlen(flag->variable) >= flag->width)
         flag->width = 0;
     if (ft_strlen(flag->variable) >= flag->precision)
@@ -38,7 +52,9 @@ int        ft_calc_flags(s_modif *flag)
         flag->width = flag->width - flag->precision;
     if (flag->precision > ft_strlen(flag->variable))
         flag->precision -= ft_strlen(flag->variable);
-/*
+	if (flag->width > ft_strlen(flag->variable))
+		flag->width -= ft_strlen(flag->variable);
+	/*
     printf("flag=%d\n", flag->flag);
     printf("width=%d\n", flag->width);
     printf("precision=%d\n", flag->precision);
@@ -63,8 +79,10 @@ int print_precision(int count)
 int print_flags(s_modif *flag)
 {
 	if (flag->precision != 0)
+	{
 		flag->precision += ft_check_minus(flag);
-	else
+	}
+	else if (flag->type != 'c')
 		ft_check_minus(flag);
     if (flag->flag == 1)
     {

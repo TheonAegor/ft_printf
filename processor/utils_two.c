@@ -14,3 +14,8 @@ int 	ft_check_minus(s_modif *flag)
 	}
 	return (0);
 }
+
+int		ft_calc_flags_two(s_modif *flag)	
+{
+	return (1);
+}

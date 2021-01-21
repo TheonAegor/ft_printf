@@ -6,7 +6,7 @@ int		init_delete(s_modif *flag, int i)
 	{
 		flag->flag = 0;
 		flag->width = 0;
-		flag->precision = 0;
+		flag->precision = -1;
 		flag->type = 0;
 		flag->result = 0;
 		flag->variable = 0;

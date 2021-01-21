@@ -6,7 +6,7 @@
 /*   By: taegor <taegor@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 16:29:48 by taegor            #+#    #+#             */
-/*   Updated: 2021/01/21 11:34:42 by taegor           ###   ########.fr       */
+/*   Updated: 2021/01/21 13:52:01 by taegor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int		ft_istype(char *format, int i)
 
 int		parse_precision(char *format, int *i, va_list args, s_modif *flag)
 {
+	flag->precision = 0;
 	if (format[*i] == '*')
 	{
 		flag->precision = va_arg(args, int);

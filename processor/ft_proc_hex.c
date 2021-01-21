@@ -1,12 +1,13 @@
 #include "../includes/ft_printf.h"
 
-int		ft_proc_hex(unsigned long x, int *res, s_modif *flag)
+int		ft_proc_hex(unsigned long x, s_modif *flag)
 {
 	long long int	category;
 	unsigned long int			tmp;
 
 	category = ft_find_sixteens(x);
-	flag->variable = ft_calloc(sizeof(char), category + 1);
+	if ((flag->variable = ft_calloc(sizeof(char), category + 1)) == NULL)
+		return (-1);
 	flag->variable[category--] = '\0';
 	while (category >= 0 )
 	{
@@ -20,5 +21,7 @@ int		ft_proc_hex(unsigned long x, int *res, s_modif *flag)
 		flag->result++;	
 		x = x / 16;
 	}
+	ft_calc_flags(flag);
+	print_flags(flag);
 	return (1);
 }
