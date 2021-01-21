@@ -1,6 +1,6 @@
 #	include "./includes/ft_printf.h"
 
-	enum ints {max = 2147483647, min = -2147483648, z = -12, o = 1, simple = 234};
+	enum ints {max = 2147483647, min = -2147483648, z = 0, o = 1, simple = 234, tv = -12};
 	enum chars {a = 97, A = 65, one = 49, question = 64}; 
 
 int main(void)
@@ -15,22 +15,24 @@ int main(void)
 	char *p_str;
 	enum chars arr_ch[] = {a, A, question, one};
 	enum chars iter;
-	enum ints arr[5] = {o, z, simple, max, min};
+	enum ints arr[] = {o, z, tv, simple, max, min};
 	enum ints iterator;
 
 	zerro = NULL;
 	printf("=============================TEST INT======================\n");	
-	while (i < 5)
+	while (i < 6)
 	{
 		iterator = arr[i];
-		result = ft_printf("%0d", iterator);
+		result = ft_printf("%8.4d", iterator);
 		printf("1)mine:%d\n", result);
-		result = printf("%0d", iterator);
+		result = printf("%8.4d", iterator);
 		printf("2)original:%d\n\n", result);
 		i++;
 	}
 	printf("=============================TEST HEX======================\n");	
+	/*
 	i = 0;
+
 	while (i < 5)
 	{
 		iterator = arr[i];
@@ -52,6 +54,7 @@ int main(void)
 		printf("2)original:%d\n\n", result);
 		i++;
 	}
+	*/
 /*
 	printf("=============================TEST STRING======================\n");	
 	i = 0;
@@ -155,6 +158,42 @@ int main(void)
 //	result = ft_printf("%010.20s|", "hello world");
 //	printf("result:%d\n", result);
 */
+/*
+int		a = -4;
+	int		b = 0;
+	char	c = 'a';
+	int		d = 2147483647;
+	int		e = -2147483648;
+	int		f = 42;
+	int		g = 25;
+	int		h = 4200;
+	i = 8;
+	int		j = -12;
+	int		k = 123456789;
+	int		l = 0;
+	int		m = -12345678;
+	char	*n = "abcdefghijklmnop";
+	char	*o = "-a";
+	char	*p = "-12";
+	char	*q = "0";
+	char	*r = "%%";
+	char	*s = "-2147483648";
+	char	*t = "0x12345678";
+	char	*u = "-0";
 
+result = printf("%4i, %4d, %4d, %4d, %4d, %4d, %4d      , %4d", i, j, k, l, m, c, e, d);
+printf("result:%d\n", result);
+result = ft_printf("%4i, %4d, %4d, %4d, %4d, %4d, %4d      , %4d", i, j, k, l, m, c, e, d);
+printf("result:%d\n", result);
+
+a = 4;
+result = printf("%*.*i, %.4d, %.*d, %*d, %*d, %*d,       %*d, %*d", a, i, a, j, a, k, a, l, a, m, a, c, a, e, a, d);
+printf("result:%d\n", result);
+result = ft_printf("%*.*i, %.4d, %.*d, %*d, %*d, %*d,       %*d, %*d", a, i, a, j, a, k, a, l, a, m, a, c, a, e, a, d);
+printf("result:%d\n", result);
+*/
+/*
+*/
 }
+
 

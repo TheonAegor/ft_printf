@@ -6,7 +6,7 @@
 /*   By: taegor <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 13:38:47 by taegor            #+#    #+#             */
-/*   Updated: 2021/01/21 13:38:48 by taegor           ###   ########.fr       */
+/*   Updated: 2021/01/21 18:58:24 by taegor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,21 +40,26 @@ int 	ft_printzero(int count)
 
 int        ft_calc_flags(s_modif *flag)
 {
+	int len;
+
+	len = ft_strlen(flag->variable);
+	len -= ft_check_minus(flag);
+//    printf("precision=%d\n", flag->precision);
+//    printf("width=%d\n", flag->width);
 	if (flag->type == 'c')
 		flag->precision = 0;
-    if (ft_strlen(flag->variable) >= flag->width)
+    if (len >= flag->width)
         flag->width = 0;
-    if (ft_strlen(flag->variable) >= flag->precision)
+    if (len >= flag->precision)
         flag->precision = 0;
     if (flag->precision >= flag->width)
         flag->width = 0;
-    else if (flag->width > flag->precision)
-        flag->width = flag->width - flag->precision;
-    if (flag->precision > ft_strlen(flag->variable))
-        flag->precision -= ft_strlen(flag->variable);
-	if (flag->width > ft_strlen(flag->variable))
-		flag->width -= ft_strlen(flag->variable);
-	/*
+    if (flag->width > len)
+        flag->width = flag->width - len;
+    if (flag->precision > len)
+        flag->precision -= len;
+	flag->width -= flag->precision;
+/*
     printf("flag=%d\n", flag->flag);
     printf("width=%d\n", flag->width);
     printf("precision=%d\n", flag->precision);
@@ -76,14 +81,27 @@ int print_precision(int count)
     return (i);
 }
 
+int 	ft_print_prec_less_neg(s_modif *flag)
+{
+	char *tmp;
+	int len;
+
+	len = ft_strlen(flag->variable);
+	if (*flag->variable == '-')
+		len -= 1;
+	if (len < flag->precision)
+	{
+		flag->result += ft_putchar('-');
+        flag->result += print_precision(flag->precision - 1);
+		tmp = flag->variable;
+		flag->variable = ft_strdup(&flag->variable[1]);
+		free(tmp);
+	}
+	return (1);
+}
+
 int print_flags(s_modif *flag)
 {
-	if (flag->precision != 0)
-	{
-		flag->precision += ft_check_minus(flag);
-	}
-	else if (flag->type != 'c')
-		ft_check_minus(flag);
     if (flag->flag == 1)
     {
         flag->result += print_precision(flag->precision);
@@ -98,8 +116,11 @@ int print_flags(s_modif *flag)
     }
     else if (flag->flag == 0)
     {
+		if (*flag->variable  == '-')
+			ft_print_prec_less_neg(flag);
+		else
+        	flag->result += ft_printspace(flag->width);
         flag->result += print_precision(flag->precision);
-        flag->result += ft_printspace(flag->width);
         ft_putstr(flag->variable);
     }
     return (1);

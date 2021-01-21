@@ -4,6 +4,7 @@
 #include "libft.h"
 #include "ft_parser.h"
 
+int 	ft_print_prec_less_neg(s_modif *flag);
 int     ft_printf(const char *format, ...);
 int		ft_copysrc(char *dst, char *src);
 int		ft_processor(s_modif *flag, va_list args, int *res);
@@ -23,5 +24,6 @@ int 	ft_calc_flags(s_modif *flag);
 int 	print_flags(s_modif *flag);
 int 	ft_check_minus(s_modif *flag);
 char 	*ft_itoa_unsigned(unsigned long int x);
+char 	*ft_itoa_base(unsigned long long int x);
 
 #endif

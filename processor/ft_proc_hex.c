@@ -2,9 +2,24 @@
 
 int		ft_proc_hex(unsigned long x, s_modif *flag)
 {
-	long long int	category;
-	unsigned long int			tmp;
+	char			*tmp;
+	int 			i;
 
+	if ((tmp = ft_itoa_base(x)) == NULL)
+		return (-1);
+	if (x == 0 && (flag->precision == 0))
+		*tmp = '\0';
+	i = -1;
+	if (flag->type == 'X')
+		while (tmp[++i] != '\0')
+			tmp[i] = (char)(ft_toupper((int)tmp[i]));
+	flag->variable = ft_strdup(tmp);
+	free(tmp);
+	flag->result += ft_strlen(flag->variable);
+	ft_calc_flags(flag);
+	print_flags(flag);
+	return (1);
+/*
 	category = ft_find_sixteens(x);
 	if ((flag->variable = ft_calloc(sizeof(char), category + 1)) == NULL)
 		return (-1);
@@ -23,5 +38,5 @@ int		ft_proc_hex(unsigned long x, s_modif *flag)
 	}
 	ft_calc_flags(flag);
 	print_flags(flag);
-	return (1);
+*/
 }

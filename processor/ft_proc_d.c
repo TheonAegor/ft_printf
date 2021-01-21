@@ -6,7 +6,7 @@
 /*   By: taegor <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 12:45:00 by taegor            #+#    #+#             */
-/*   Updated: 2021/01/21 12:45:05 by taegor           ###   ########.fr       */
+/*   Updated: 2021/01/21 15:36:52 by taegor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int		ft_proc_d(int x, s_modif *flag)
 	flag->result += ft_strlen(flag->variable);
 	if (flag->precision != -1 && flag->flag == 2)
 		flag->flag = 0;
+//	printf("fv:%s|\n", flag->variable);
 	ft_calc_flags(flag);
 	print_flags(flag);
 	return (1);
