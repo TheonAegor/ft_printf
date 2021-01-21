@@ -1,45 +1,21 @@
 #include "../includes/ft_printf.h"
 
-static int	fill_var(int *category, s_modif *flag, long long int x, int *res)
+
+
+int		ft_proc_d(int x, s_modif *flag)
 {
-	int	tmp;
+	char *arg;
 
-	while(*category >= 0)
-	{
-		tmp = x % 10;
-		flag->variable[*category] = tmp + 48; 
-		*category = *category - 1;
-		x = x / 10;
-		flag->result++;
-	}
-	return (1);
-}
-
-int		ft_proc_d(int x, int *res, s_modif *flag)
-{
-	int category;
-
-	if (x == -2147483648)
-	{
-		flag->variable = ft_calloc(sizeof(char), category + 1);	
-		ft_copysrc(flag->variable, "-2147483648");
-		flag->result += ft_strlen(flag->variable);
-	}
-	else if (x < 0)
-	{
-		x = (unsigned)x * (-1);
-		category = ft_find_tens(x) + 1;
-		flag->variable = ft_calloc(sizeof(char), category + 1);	
-		flag->variable[category--] = '\0';
-		fill_var(&category,flag, x, res);
-		flag->variable[0] = '-';
-	}
-	else
-	{
-		category = ft_find_tens(x);
-		flag->variable = ft_calloc(sizeof(char), category);	
-		flag->variable[category--] = '\0';
-		fill_var(&category,flag, x, res);
-	}
+	if ((arg = ft_itoa(x)) == NULL)
+		return (-1);
+	if (x == 0 && flag->precision == 0)
+		*arg = '\0';
+	if ((flag->variable = ft_strdup(arg)) == NULL)
+		return (-1);
+	flag->result += ft_strlen(flag->variable);
+	if (flag->precision != -1 && flag->flag == 2)
+		flag->flag = 0;
+	ft_calc_flags(flag);
+	print_flags(flag);
 	return (1);
 }

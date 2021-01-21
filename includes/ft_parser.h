@@ -13,5 +13,4 @@ typedef struct		t_modif
 }					s_modif;
 
 int			ft_parser(char *format, va_list args, int *i, s_modif *flag);
-int			ft_printf(const char *format, ...);
 #endif

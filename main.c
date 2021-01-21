@@ -17,18 +17,17 @@ int main(void)
 	enum ints arr[5] = {o, z, simple, max, min};
 	enum ints iterator;
 
-/*
 	printf("=============================TEST INT======================\n");	
 	while (i < 5)
 	{
 		iterator = arr[i];
-		result = ft_printf("%10d", iterator);
+		result = ft_printf("%10.20d", iterator);
 		printf("1)mine:%d\n", result);
-		result = printf("%10d", iterator);
+		result = printf("%10.20d", iterator);
 		printf("2)original:%d\n\n", result);
 		i++;
 	}
-*/
+/*
 	printf("=============================TEST HEX======================\n");	
 	i = 0;
 	while (i < 5)
@@ -133,12 +132,13 @@ int main(void)
 	while (i < 5)
 	{
 		iterator = arr[i];
-		result = ft_printf("%.d", iterator);
+		result = ft_printf("%.5d", iterator);
 		printf("(1)mine:%d\n", result);
-		result = printf("%.d", iterator);
+		result = printf("%.5d", iterator);
 		printf("(2)original:%d\n\n", result);
 		i++;
 	}
 
+*/
 }
 

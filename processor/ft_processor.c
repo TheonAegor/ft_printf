@@ -4,14 +4,13 @@ int		ft_print_hex(unsigned x, int *res);
 	
 int		ft_processor(s_modif *flag, va_list args, int *res)
 {
-	int change;
+	int result;
 	
-	change = *res;
 //	printf("res_b%d\n", *res);
 	if (flag->type == 'd' || flag->type == 'i')
-		ft_proc_d(va_arg(args, int), res, flag);
+		result = ft_proc_d(va_arg(args, int), flag);
 	if (flag->type == 'u')
-		ft_proc_u(va_arg(args, unsigned long int), res, flag);
+		result = ft_proc_u(va_arg(args, unsigned long int), flag);
 	if (flag->type == 'c')
 		ft_proc_c(va_arg(args, char*), res, flag);
 	if (flag->type == 's')
