@@ -1,6 +1,6 @@
 #	include "./includes/ft_printf.h"
 
-	enum ints {max = 2147483647, min = -2147483648, z = 0, o = 1, simple = 234};
+	enum ints {max = 2147483647, min = -2147483648, z = -12, o = 1, simple = 234};
 	enum chars {a = 97, A = 65, one = 49, question = 64}; 
 
 int main(void)
@@ -23,9 +23,9 @@ int main(void)
 	while (i < 5)
 	{
 		iterator = arr[i];
-		result = ft_printf("%.10u", iterator);
+		result = ft_printf("%0d", iterator);
 		printf("1)mine:%d\n", result);
-		result = printf("%.10u", iterator);
+		result = printf("%0d", iterator);
 		printf("2)original:%d\n\n", result);
 		i++;
 	}
@@ -41,18 +41,18 @@ int main(void)
 		i++;
 	}
 
-/*
 	printf("=============================TEST UNSIGNED======================\n");	
 	i = 0;
 	while (i < 5)
 	{
 		iterator = arr[i];
-		result = ft_printf("%10u\t", iterator);
+		result = ft_printf("%0c%0u\t",'a', iterator);
 		printf("1)mine:%d\n", result);
-		result = printf("%10u\t", iterator);
+		result = printf("%0c%0u\t",'a', iterator);
 		printf("2)original:%d\n\n", result);
 		i++;
 	}
+/*
 	printf("=============================TEST STRING======================\n");	
 	i = 0;
 	while (i < 2)
@@ -75,7 +75,6 @@ int main(void)
 		printf("2)original:%d\n\n", result);
 		i++;
 	}
-*/
 	printf("=============================TEST POINTER======================\n");	
 	i = 0;
 	while (i < 5)
@@ -87,6 +86,7 @@ int main(void)
 		printf("2)original:%d\n\n", result);
 		i++;
 	}
+*/
 /*
 	printf("=============================TEST %%======================\n");	
 	result = ft_printf("%%%d", 5);
@@ -148,9 +148,9 @@ int main(void)
 	result = ft_printf("%010.20c|", '-');
 	printf("result:%d\n", result);
 
-	result = printf("%015.2s|", "hello world");
+	result = printf("%d%0s|",1, "abcdefghijklmnop");
 	printf("result:%d\n", result);
-	result = ft_printf("%015.2s|", "hello world");
+	result = ft_printf("%d%0s|",1, "abcdefghijklmnop");
 	printf("result:%d\n", result);
 //	result = ft_printf("%010.20s|", "hello world");
 //	printf("result:%d\n", result);

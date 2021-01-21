@@ -6,7 +6,7 @@
 /*   By: taegor <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 13:38:39 by taegor            #+#    #+#             */
-/*   Updated: 2021/01/21 14:02:09 by taegor           ###   ########.fr       */
+/*   Updated: 2021/01/21 14:25:37 by taegor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,17 @@ int 		print_s(s_modif *flag)
 	int i;
 
 	i = 0;
-	while (i++ < flag->precision)
+	if (flag->precision > 0)
 	{
-		ft_putchar(flag->variable[i]);
+		while (i < flag->precision && flag->variable[i])
+		{
+			ft_putchar(flag->variable[i++]);
+		}
 	}
-	return (i - 1);
+	else
+		while (i++ < ft_strlen(flag->variable))
+			ft_putchar(flag->variable[i++]);
+	return (i);
 }
 int calc_flags(s_modif *flag)
 {

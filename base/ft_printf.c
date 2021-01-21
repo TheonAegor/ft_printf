@@ -15,7 +15,7 @@ int		init_delete(s_modif *flag, int i)
 	{
 		flag->flag = 0;
 		flag->width = 0;
-		flag->precision = 0;
+		flag->precision = -1;
 		flag->variable = NULL;
 		free(flag->variable);
 		flag->type = 0;
@@ -55,9 +55,9 @@ int ft_printf(const char *format, ...)
 			init_delete(&flag, 0);
 			return (-1);
 		}
+		init_delete(&flag, 0);
 //		printf("\nline[i]=%c\n", line[i]);
 	}
-	init_delete(&flag, 0);
 	va_end(args);
 	return (flag.result);
 }
