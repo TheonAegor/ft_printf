@@ -6,13 +6,13 @@
 /*   By: taegor <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 13:47:39 by taegor            #+#    #+#             */
-/*   Updated: 2021/01/22 14:34:31 by taegor           ###   ########.fr       */
+/*   Updated: 2021/01/22 15:27:00 by taegor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int		ft_processor(t_modif *flag, va_list args, int *res)
+int		ft_processor(t_modif *flag, va_list args)
 {
 	int result;
 

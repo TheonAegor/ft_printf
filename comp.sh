@@ -4,5 +4,5 @@
 
 rm a.out
 make
-gcc main.c libftprintf.a 
+gcc -g main.c libftprintf.a 
 ./a.out

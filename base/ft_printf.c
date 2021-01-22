@@ -6,7 +6,7 @@
 /*   By: taegor <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 13:59:45 by taegor            #+#    #+#             */
-/*   Updated: 2021/01/22 14:34:41 by taegor           ###   ########.fr       */
+/*   Updated: 2021/01/22 15:49:50 by taegor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int		ft_printf(const char *format, ...)
 	while (ft_write(&flag, line, &i) == 1)
 	{
 		ft_parser(line, args, &i, &flag);
-		if (ft_processor(&flag, args, &i) < 0)
+		if (ft_processor(&flag, args) < 0)
 		{
 			free(line);
 			init_delete(&flag, 0);

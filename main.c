@@ -39,7 +39,6 @@ int main(void)
 	enum ints arr[] = {ol, z, tv, simple, max, min};
 	enum ints iterator;
 
-/*
 	printf("=============================TEST INT======================\n");	
 	while (i < 6)
 	{
@@ -50,8 +49,6 @@ int main(void)
 		printf("2)original:%d\n\n", result);
 		i++;
 	}
-*/
-/*
 	printf("=============================TEST HEX======================\n");	
 	i = 0;
 
@@ -76,8 +73,6 @@ int main(void)
 		printf("2)original:%d\n\n", result);
 		i++;
 	}
-	*/
-/*
 	printf("=============================TEST STRING======================\n");	
 	i = 0;
 	while (i < 9)
@@ -89,21 +84,17 @@ int main(void)
 		printf("(2)original:%d\n\n", result);
 		i++;
 	}
-*/
-/*
 	printf("=============================TEST CHAR======================\n");	
 	i = 0;
 	while (i < 5)
 	{
 		iter = arr_ch[i];
-		result = ft_printf("%5c", iter);
+		result = ft_printf("%-5c", iter);
 		printf("(1)mine:%d\n", result);
-		result = printf("%5c", iter);
+		result = printf("%-5c", iter);
 		printf("(2)original:%d\n\n", result);
 		i++;
 	}
-*/
-/*
 	printf("=============================TEST POINTER======================\n");	
 	i = 0;
 	while (i < 5)
@@ -115,8 +106,6 @@ int main(void)
 		printf("2)original:%d\n\n", result);
 		i++;
 	}
-*/
-/*
 	printf("=============================TEST %%======================\n");	
 	result = ft_printf("%5%d", 5);
 	printf("1)mine:%d\n", result);
@@ -124,7 +113,7 @@ int main(void)
 	printf("2)original:%d\n\n", result);
 	result = ft_printf("%-05%%d", 5);
 	printf("1)mine:%d\n", result);
-	result = printf("-05%%d", 5);
+	result = printf("%-05%%d", 5);
 	printf("2)original:%d\n\n", result);
 	printf("=============================TEST MULTIPLE======================\n");	
 	i = 0;
@@ -149,8 +138,6 @@ int main(void)
 		printf("2)original:%d\n\n", result);
 		i++;
 	}
-*/
-/*
 	printf("=============================TEST MISTAKES======================\n");	
 	i = 0;
 	while (i < 5)
@@ -185,7 +172,6 @@ int main(void)
 	printf("result:%d\n", result);
 //	result = ft_printf("%010.20s|", "hello world");
 //	printf("result:%d\n", result);
-*/
 /*
 int		a = -4;
 	int		b = 0;
@@ -230,7 +216,11 @@ printf("result:%d\n", result);
 result = printf("%c, %-c, %12c, %-3c, %-1c, %1c, %-2c, %-4c, %5c, %3c, %-*c, %-*c, %*c, %*c", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0);
 printf("result:%d\n", result);
 */
-	ft_printf("%10d", 10);
+//	ft_printf("%10d", 10);
+	result = ft_printf("%3.*d, %4-d, %1d, %13d",-12, 0, 23, -15, 2147988);
+	printf("result:%d\n", result);
+	result = printf("%3.*d, %4-.5d, %1d, %13d",-12, 0, 23, -15, 2147988);
+	printf("result:%d\n", result);
 }
 
 

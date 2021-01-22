@@ -6,7 +6,7 @@
 /*   By: taegor <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 14:08:34 by taegor            #+#    #+#             */
-/*   Updated: 2021/01/22 14:51:59 by taegor           ###   ########.fr       */
+/*   Updated: 2021/01/22 15:43:34 by taegor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,12 @@
 
 # include "libft.h"
 
-typedef struct		s_modific
+typedef struct		s_modif
 {
 	char	type;
 	int		precision;
 	int		width;
 	int		flag;
-	int		varg;
 	int		result;
 	char	*variable;
 }					t_modif;
@@ -31,7 +30,7 @@ int					ft_parser(char *format, va_list args,
 int					ft_print_prec_less_neg(t_modif *flag);
 int					ft_printf(const char *format, ...);
 int					ft_copysrc(char *dst, char *src);
-int					ft_processor(t_modif *flag, va_list args, int *res);
+int					ft_processor(t_modif *flag, va_list args);
 int					ft_putnbr_u(unsigned x);
 int					ft_find_tens(unsigned long x);
 int					ft_proc_hex(unsigned int x, t_modif *flag);
