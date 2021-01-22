@@ -6,7 +6,7 @@
 /*   By: taegor <taegor@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 16:29:48 by taegor            #+#    #+#             */
-/*   Updated: 2021/01/22 12:09:34 by taegor           ###   ########.fr       */
+/*   Updated: 2021/01/22 14:15:14 by taegor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 int		ft_istype(char *format, int i)
 {
 	if (format[i] == 'd' || format[i] == 'i' || format[i] == 'u'
-			|| format[i] == 'c' || format[i] == 's' || format[i] == 'p' 
+			|| format[i] == 'c' || format[i] == 's' || format[i] == 'p'
 			|| format[i] == 'x' || format[i] == 'X' || format[i] == '%')
 		return (1);
 	return (0);
 }
 
-int		parse_precision(char *format, int *i, va_list args, s_modif *flag)
+int		parse_precision(char *format, int *i, va_list args, t_modif *flag)
 {
 	flag->precision = 0;
 	if (format[*i] == '*')
@@ -38,13 +38,13 @@ int		parse_precision(char *format, int *i, va_list args, s_modif *flag)
 		if (flag->flag == 2)
 			flag->flag = 0;
 		flag->precision = ft_atoi(&format[*i]);
-		while(ft_isdigit(format[*i]))
+		while (ft_isdigit(format[*i]))
 			++*i;
 	}
 	return (1);
 }
 
-int		parse_flags(char *format, int *i, va_list args, s_modif *flag)
+int		parse_flags(char *format, int *i, va_list args, t_modif *flag)
 {
 	while (format[*i] == '-' || format[*i] == '0')
 	{
@@ -73,10 +73,8 @@ int		parse_flags(char *format, int *i, va_list args, s_modif *flag)
 	return (1);
 }
 
-int		ft_parser(char *format, va_list args, int *i, s_modif *flag)
+int		ft_parser(char *format, va_list args, int *i, t_modif *flag)
 {
-	int j;
-
 	++*i;
 	parse_flags(format, i, args, flag);
 	if (format[*i] == '.')
@@ -88,11 +86,5 @@ int		ft_parser(char *format, va_list args, int *i, s_modif *flag)
 	if (ft_istype(format, *i) == 0 && flag->type == '\0')
 		return (-1);
 	++*i;
-/*
-	printf("\ntype=%c\n", flag->type);
-	printf("width=%d\n", flag->width);
-	printf("prec=%d\n", flag->precision);
-	printf("\nres = %d\n", *i);
-*/
-	return (j);
+	return (1);
 }
