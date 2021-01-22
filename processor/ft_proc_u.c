@@ -6,13 +6,13 @@
 /*   By: taegor <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 12:45:09 by taegor            #+#    #+#             */
-/*   Updated: 2021/01/22 13:05:06 by taegor           ###   ########.fr       */
+/*   Updated: 2021/01/22 14:12:08 by taegor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int		ft_proc_u(unsigned int x, s_modif *flag)
+int		ft_proc_u(unsigned int x, t_modif *flag)
 {
 	char	*arg;
 

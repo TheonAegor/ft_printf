@@ -6,13 +6,13 @@
 /*   By: taegor <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 13:37:55 by taegor            #+#    #+#             */
-/*   Updated: 2021/01/22 13:37:58 by taegor           ###   ########.fr       */
+/*   Updated: 2021/01/22 14:11:27 by taegor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int		ft_proc_percent(s_modif *flag)
+int		ft_proc_percent(t_modif *flag)
 {
 	if ((flag->variable = ft_calloc(sizeof(char), 2)) == NULL)
 		return (-1);

@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: taegor <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/22 13:59:45 by taegor            #+#    #+#             */
+/*   Updated: 2021/01/22 14:34:41 by taegor           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/ft_printf.h"
 
-int		init_delete(s_modif *flag, int i)
+int		init_delete(t_modif *flag, int i)
 {
 	if (i == 1)
 	{
@@ -16,16 +28,16 @@ int		init_delete(s_modif *flag, int i)
 		flag->flag = 0;
 		flag->width = 0;
 		flag->precision = -1;
-		flag->variable = NULL;
 		free(flag->variable);
+		flag->variable = NULL;
 		flag->type = 0;
 	}
 	return (1);
 }
 
-int		ft_write(s_modif *flag, char *line, int *i)	
+int		ft_write(t_modif *flag, char *line, int *i)
 {
-	while(line[*i] != '%' && line[*i])
+	while (line[*i] != '%' && line[*i])
 	{
 		ft_putchar(line[*i]);
 		flag->result++;
@@ -36,10 +48,10 @@ int		ft_write(s_modif *flag, char *line, int *i)
 	return (1);
 }
 
-int ft_printf(const char *format, ...)
+int		ft_printf(const char *format, ...)
 {
-	char		*line;	
-	s_modif		flag;
+	char		*line;
+	t_modif		flag;
 	va_list		args;
 	int			i;
 
@@ -57,7 +69,6 @@ int ft_printf(const char *format, ...)
 			return (-1);
 		}
 		init_delete(&flag, 0);
-//		printf("\nline[i]=%c\n", line[i]);
 	}
 	va_end(args);
 	free(line);

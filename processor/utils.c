@@ -6,13 +6,13 @@
 /*   By: taegor <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 13:38:47 by taegor            #+#    #+#             */
-/*   Updated: 2021/01/22 13:51:49 by taegor           ###   ########.fr       */
+/*   Updated: 2021/01/22 14:51:04 by taegor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int		ft_printspace(s_modif *flag)
+int		ft_printspace(t_modif *flag)
 {
 	int i;
 
@@ -27,7 +27,7 @@ int		ft_printspace(s_modif *flag)
 	return (i);
 }
 
-int		ft_printzero(s_modif *flag)
+int		ft_printzero(t_modif *flag)
 {
 	int i;
 
@@ -42,7 +42,7 @@ int		ft_printzero(s_modif *flag)
 	return (i);
 }
 
-int		ft_calc_flags(s_modif *flag)
+int		ft_calc_flags(t_modif *flag)
 {
 	int len;
 
@@ -64,7 +64,7 @@ int		ft_calc_flags(s_modif *flag)
 	return (1);
 }
 
-int		print_precision(s_modif *flag)
+int		print_precision(t_modif *flag)
 {
 	int i;
 
@@ -79,7 +79,7 @@ int		print_precision(s_modif *flag)
 	return (i);
 }
 
-int		print_flags(s_modif *flag)
+int		print_flags(t_modif *flag)
 {
 	if (flag->flag == 1)
 	{

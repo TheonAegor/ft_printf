@@ -6,13 +6,13 @@
 /*   By: taegor <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 13:37:19 by taegor            #+#    #+#             */
-/*   Updated: 2021/01/22 13:37:20 by taegor           ###   ########.fr       */
+/*   Updated: 2021/01/22 14:11:18 by taegor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int		ft_proc_p(unsigned long int x, s_modif *flag)
+int		ft_proc_p(unsigned long int x, t_modif *flag)
 {
 	long long int				category;
 	unsigned long int			tmp;
@@ -27,7 +27,7 @@ int		ft_proc_p(unsigned long int x, s_modif *flag)
 		if (tmp < 10)
 			flag->variable[category--] = tmp + 48;
 		if (tmp >= 10 && tmp <= 15)
-			flag->variable[category--] = ((tmp + 1) % 10) | 48 ^ 80;
+			flag->variable[category--] = (((tmp + 1) % 10) | 48) ^ 80;
 		flag->result++;
 		x = x / 16;
 	}

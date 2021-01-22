@@ -6,13 +6,13 @@
 /*   By: taegor <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 12:45:00 by taegor            #+#    #+#             */
-/*   Updated: 2021/01/22 13:32:28 by taegor           ###   ########.fr       */
+/*   Updated: 2021/01/22 14:10:44 by taegor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int		ft_calc_flags_d_neg(s_modif *flag)
+int		ft_calc_flags_d_neg(t_modif *flag)
 {
 	int len;
 
@@ -32,7 +32,7 @@ int		ft_calc_flags_d_neg(s_modif *flag)
 	return (1);
 }
 
-int		ft_proc_d(int x, s_modif *flag)
+int		ft_proc_d(int x, t_modif *flag)
 {
 	char *arg;
 

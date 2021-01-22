@@ -50,15 +50,17 @@ int main(void)
 		printf("2)original:%d\n\n", result);
 		i++;
 	}
+*/
+/*
 	printf("=============================TEST HEX======================\n");	
 	i = 0;
 
 	while (i < 5)
 	{
 		iterator = arr[i];
-		result = ft_printf("%10x\t", iterator);
+		result = ft_printf("%u, %*x, %*X\t",-12, -1, iterator, -1, iterator);
 		printf("1)mine:%d\n", result);
-		result = printf("%10x\t", iterator);
+		result = printf("%u, %*x, %*X\t",-12, -1, iterator, -1, iterator);
 		printf("2)original:%d\n\n", result);
 		i++;
 	}
@@ -114,6 +116,7 @@ int main(void)
 		i++;
 	}
 */
+/*
 	printf("=============================TEST %%======================\n");	
 	result = ft_printf("%5%d", 5);
 	printf("1)mine:%d\n", result);
@@ -123,7 +126,6 @@ int main(void)
 	printf("1)mine:%d\n", result);
 	result = printf("-05%%d", 5);
 	printf("2)original:%d\n\n", result);
-/*
 	printf("=============================TEST MULTIPLE======================\n");	
 	i = 0;
 	while (i < 5)
@@ -219,7 +221,16 @@ result = ft_printf("%*.*i, %.4d, %.*d, %*d, %*d, %*d,       %*d, %*d", a, i, a, 
 printf("result:%d\n", result);
 */
 /*
+result = ft_printf("%-2s, %.s, %-4s, %-2.4s, %-8.12s, %3s, %8s, %---2s, %.*s, %.0s, %.1s, %.2s, %.4s, %.8s", NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, -2, NULL, NULL, NULL, NULL, NULL, NULL);
+printf("result:%d\n", result);
+result = printf("%-2s, %.s, %-4s, %-2.4s, %-8.12s, %3s, %8s, %---2s, %.*s, %.0s, %.1s, %.2s, %.4s, %.8s", NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, -2, NULL, NULL, NULL, NULL, NULL, NULL);
+printf("result:%d\n", result);
+result = ft_printf("%c, %-c, %12c, %-3c, %-1c, %1c, %-2c, %-4c, %5c, %3c, %-*c, %-*c, %*c, %*c", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0);
+printf("result:%d\n", result);
+result = printf("%c, %-c, %12c, %-3c, %-1c, %1c, %-2c, %-4c, %5c, %3c, %-*c, %-*c, %*c, %*c", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0);
+printf("result:%d\n", result);
 */
+	ft_printf("%10d", 10);
 }
 
 

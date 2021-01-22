@@ -6,13 +6,13 @@
 /*   By: taegor <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 17:52:40 by taegor            #+#    #+#             */
-/*   Updated: 2021/01/22 13:53:48 by taegor           ###   ########.fr       */
+/*   Updated: 2021/01/22 14:13:30 by taegor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int		ft_check_minus(s_modif *flag)
+int		ft_check_minus(t_modif *flag)
 {
 	char	*tmp;
 
