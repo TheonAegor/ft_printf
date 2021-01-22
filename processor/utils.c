@@ -6,7 +6,7 @@
 /*   By: taegor <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 13:38:47 by taegor            #+#    #+#             */
-/*   Updated: 2021/01/22 12:13:24 by taegor           ###   ########.fr       */
+/*   Updated: 2021/01/22 13:44:43 by taegor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int 	ft_printzero(s_modif *flag)
 	int i;
 
 	i = 0;
-//	printf("here\n");
 	if (flag->width <= 0)
 		return (0);
 	while(flag->width-- > 0)
@@ -48,12 +47,7 @@ int        ft_calc_flags(s_modif *flag)
 	int len;
 
 	len = ft_strlen(flag->variable);
-/*
- 	printf("precision=%d\n", flag->precision);
-    printf("width=%d\n", flag->width);
-    printf("len(var)=%d\n", ft_strlen(flag->variable));
-*/
-	if (flag->type == 'c' && flag->precision != -1)
+ 	if (flag->type == 'c' && flag->precision != -1)
 		flag->precision = 0;
     if (len >= flag->precision && flag->precision != -1)
         flag->precision = 0;
@@ -67,13 +61,6 @@ int        ft_calc_flags(s_modif *flag)
 		flag->width -= flag->precision;
     else if (flag->precision >= flag->width)
         flag->width = 0;
-/*
-    printf("width=%d\n", flag->width);
-    printf("flag=%d\n", flag->flag);
-    printf("width=%d\n", flag->width);
-    printf("precision=%d\n", flag->precision);
-    printf("var=%s\n", flag->variable);
-*/
     return (1);
 }
 

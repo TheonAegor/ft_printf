@@ -6,7 +6,7 @@
 /*   By: taegor <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 12:46:28 by taegor            #+#    #+#             */
-/*   Updated: 2021/01/22 12:31:49 by taegor           ###   ########.fr       */
+/*   Updated: 2021/01/22 13:31:21 by taegor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ int		ft_proc_c(int c, s_modif *flag)
 {
 	if ((flag->variable = ft_calloc(sizeof(char), 2)) == NULL)
 		return (-1);
-	flag->variable[0] = c; 
-	flag->variable[1] = '\0'; 
+	flag->variable[0] = c;
+	flag->variable[1] = '\0';
 	flag->result++;
 	if (c == '\0')
 		flag->width -= 1;

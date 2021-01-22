@@ -6,7 +6,7 @@
 /*   By: taegor <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 12:45:13 by taegor            #+#    #+#             */
-/*   Updated: 2021/01/21 14:34:38 by taegor           ###   ########.fr       */
+/*   Updated: 2021/01/22 13:30:51 by taegor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_itoa_unsigned(unsigned long x)
 {
-	char			*res;	
+	char			*res;
 	int				category;
 
 	category = ft_find_tens(x);

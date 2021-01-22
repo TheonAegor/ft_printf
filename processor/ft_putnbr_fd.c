@@ -6,7 +6,7 @@
 /*   By: taegor <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 13:52:25 by taegor            #+#    #+#             */
-/*   Updated: 2021/01/16 11:39:08 by taegor           ###   ########.fr       */
+/*   Updated: 2021/01/22 13:41:46 by taegor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int		ft_putnbr_u(unsigned x)
 {
 	static int	res;
-	
+
 	if (x < 10)
 	{
 		x += 48;
@@ -23,7 +23,7 @@ int		ft_putnbr_u(unsigned x)
 		return ;
 	}
 	else
-		ft_putnbr_u(x/10, fd);
+		ft_putnbr_u(x / 10, fd);
 	x = (x % 10) + 48;
 	res += ft_putchar(x);
 }

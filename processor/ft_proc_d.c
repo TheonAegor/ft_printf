@@ -6,13 +6,13 @@
 /*   By: taegor <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 12:45:00 by taegor            #+#    #+#             */
-/*   Updated: 2021/01/22 10:37:35 by taegor           ###   ########.fr       */
+/*   Updated: 2021/01/22 13:32:28 by taegor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int 	ft_calc_flags_d_neg(s_modif *flag)
+int		ft_calc_flags_d_neg(s_modif *flag)
 {
 	int len;
 
@@ -25,13 +25,11 @@ int 	ft_calc_flags_d_neg(s_modif *flag)
 		flag->precision -= len;
 	if (flag->width > len + 1)
 		flag->width -= len + 1;
-//	printf("width:%d\n", flag->width);
 	if (flag->width > flag->precision && flag->precision >= 0)
 		flag->width -= flag->precision;
 	else if (flag->precision >= flag->width)
 		flag->width = 0;
-//	printf("width:%d\n", flag->width);
-	return (1);	
+	return (1);
 }
 
 int		ft_proc_d(int x, s_modif *flag)
@@ -48,7 +46,6 @@ int		ft_proc_d(int x, s_modif *flag)
 	flag->result += ft_strlen(flag->variable);
 	if (flag->precision != -1 && flag->flag == 2)
 		flag->flag = 0;
-//	printf("fv:%s|\n", flag->variable);
 	if (*flag->variable == '-')
 	{
 		ft_calc_flags_d_neg(flag);
@@ -57,6 +54,5 @@ int		ft_proc_d(int x, s_modif *flag)
 	else
 		ft_calc_flags(flag);
 	print_flags(flag);
-//	ft_check_minus(flag);
 	return (1);
 }
