@@ -1,7 +1,7 @@
 #	include "./includes/ft_printf.h"
 
-	enum ints {max = 2147483647, min = -2147483648, z = 0, o = 1, simple = 234, tv = -12};
-	enum chars {a = 97, A = 65, one = 49, question = 64}; 
+	enum ints {max = 2147483647, min = -2147483648, z = 0, ol = 1, simple = 234, tv = -12};
+	enum chars {a = 97, A = 65, one = 49, question = 64, zer = 0}; 
 
 int main(void)
 {
@@ -9,28 +9,48 @@ int main(void)
 	int result;
 	int i = 0;
 	char *zerro;
-	char *str_0 = "";
+	char *str_0 = "0";
 	char *str_1 = "hello";
-	char *strs[] = {str_0, str_1, NULL};
+	char *str_2 = "X";
+	char *str_3 = "abcdefhgldfkgjsl;gjlsjfd;gjsflsdfg";
+	char	*n = "abcdefghijklmnop";
+	char	*o = "-a";
+	char	*p = "-12";
+	char	*q = "0";
+	char	*r = "%%";
+	char	*s = "-2147483648";
+	char	*t = "0x12345678";
+	char	*u = "-0";
+	int		d = 2147483647;
+	int		e = -2147483648;
+	int		f = 42;
+	int		g = 25;
+	int		h = 4200;
+	int		i2 = 8;
+	int		j = -12;
+	int		k = 123456789;
+	int		l = 0;
+	int		m = -12345678;
+	zerro = NULL;
+	char *strs[] = {n, o, p, q, r, s, t, u, zerro, NULL};
 	char *p_str;
-	enum chars arr_ch[] = {a, A, question, one};
+	enum chars arr_ch[] = {a, A, question, one, zer};
 	enum chars iter;
-	enum ints arr[] = {o, z, tv, simple, max, min};
+	enum ints arr[] = {ol, z, tv, simple, max, min};
 	enum ints iterator;
 
-	zerro = NULL;
+/*
 	printf("=============================TEST INT======================\n");	
 	while (i < 6)
 	{
 		iterator = arr[i];
-		result = ft_printf("%8.4d", iterator);
+		result = ft_printf("%04d", iterator);
 		printf("1)mine:%d\n", result);
-		result = printf("%8.4d", iterator);
+		result = printf("%04d", iterator);
 		printf("2)original:%d\n\n", result);
 		i++;
 	}
 	printf("=============================TEST HEX======================\n");	
-	/*
 	i = 0;
 
 	while (i < 5)
@@ -58,26 +78,30 @@ int main(void)
 /*
 	printf("=============================TEST STRING======================\n");	
 	i = 0;
-	while (i < 2)
+	while (i < 9)
 	{
 		p_str = strs[i];
-		result = ft_printf("%10s\t", p_str);
-		printf("1)mine:%d\n", result);
-		result = printf("%10s\t", p_str);
-		printf("2)original:%d\n\n", result);
+		result = ft_printf("%.0s", p_str);
+		printf("(1)mine:%d\n", result);
+		result = printf("%.0s", p_str);
+		printf("(2)original:%d\n\n", result);
 		i++;
 	}
+*/
+/*
 	printf("=============================TEST CHAR======================\n");	
 	i = 0;
-	while (i < 4)
+	while (i < 5)
 	{
 		iter = arr_ch[i];
-		result = ft_printf("%10c\t", iter);
-		printf("1)mine:%d\n", result);
-		result = printf("%10c\t", iter);
-		printf("2)original:%d\n\n", result);
+		result = ft_printf("%5c", iter);
+		printf("(1)mine:%d\n", result);
+		result = printf("%5c", iter);
+		printf("(2)original:%d\n\n", result);
 		i++;
 	}
+*/
+/*
 	printf("=============================TEST POINTER======================\n");	
 	i = 0;
 	while (i < 5)
@@ -90,16 +114,16 @@ int main(void)
 		i++;
 	}
 */
-/*
 	printf("=============================TEST %%======================\n");	
-	result = ft_printf("%%%d", 5);
+	result = ft_printf("%5%d", 5);
 	printf("1)mine:%d\n", result);
-	result = printf("%%%d", 5);
+	result = printf("%5%d", 5);
 	printf("2)original:%d\n\n", result);
 	result = ft_printf("%-05%%d", 5);
 	printf("1)mine:%d\n", result);
-	result = printf("%%%d", 5);
+	result = printf("-05%%d", 5);
 	printf("2)original:%d\n\n", result);
+/*
 	printf("=============================TEST MULTIPLE======================\n");	
 	i = 0;
 	while (i < 5)
@@ -123,15 +147,17 @@ int main(void)
 		printf("2)original:%d\n\n", result);
 		i++;
 	}
+*/
+/*
 	printf("=============================TEST MISTAKES======================\n");	
 	i = 0;
 	while (i < 5)
 	{
 		iterator = arr[i];
-		result = ft_printf("%d\t", iterator);
-		printf("1)mine:%d\n", result);
-		result = printf("%*.*d\t",2,3, iterator);
-		printf("2)original:%d\n\n", result);
+		result = ft_printf("%08.5x",iterator);
+		printf("(1)mine:%d\n", result);
+		result = printf("%08.5x",iterator);
+		printf("(2)original:%d\n\n", result);
 		i++;
 	}
 	printf("=============================TEST 0======================\n");	

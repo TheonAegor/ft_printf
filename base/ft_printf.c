@@ -52,6 +52,7 @@ int ft_printf(const char *format, ...)
 		ft_parser(line, args, &i, &flag);
 		if (ft_processor(&flag, args, &i) < 0)
 		{
+			free(line);
 			init_delete(&flag, 0);
 			return (-1);
 		}
@@ -59,5 +60,6 @@ int ft_printf(const char *format, ...)
 //		printf("\nline[i]=%c\n", line[i]);
 	}
 	va_end(args);
+	free(line);
 	return (flag.result);
 }

@@ -6,7 +6,7 @@
 /*   By: taegor <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 17:52:40 by taegor            #+#    #+#             */
-/*   Updated: 2021/01/21 18:58:35 by taegor           ###   ########.fr       */
+/*   Updated: 2021/01/22 12:03:14 by taegor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,12 @@
 int 	ft_check_minus(s_modif *flag)
 {
 	char *tmp;
-	int len;
 
-	len = ft_strlen(flag->variable);
-	if (*flag->variable == '-')
+	if (*flag->variable == '-' && ((flag->flag == 1 ||
+		flag->width <= 0) ||
+		(flag->flag == 2)))
 	{
-		len--;
-	}
-	if (*flag->variable == '-' && (flag->flag == 1 ||
-		flag->precision > flag->width))
-	{
-		flag->width--;
+//		printf("here\n");
 		ft_putchar('-');
 		tmp = flag->variable;
 		flag->variable = ft_strdup(&flag->variable[1]);
