@@ -6,21 +6,20 @@
 /*   By: taegor <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 17:52:40 by taegor            #+#    #+#             */
-/*   Updated: 2021/01/22 12:03:14 by taegor           ###   ########.fr       */
+/*   Updated: 2021/01/22 13:53:48 by taegor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int 	ft_check_minus(s_modif *flag)
+int		ft_check_minus(s_modif *flag)
 {
-	char *tmp;
+	char	*tmp;
 
 	if (*flag->variable == '-' && ((flag->flag == 1 ||
 		flag->width <= 0) ||
 		(flag->flag == 2)))
 	{
-//		printf("here\n");
 		ft_putchar('-');
 		tmp = flag->variable;
 		flag->variable = ft_strdup(&flag->variable[1]);
@@ -29,30 +28,13 @@ int 	ft_check_minus(s_modif *flag)
 	}
 	return (0);
 }
-/*
-int		ft_print_prec_less_neg(s_modif *flag)	
-{
-	char *tmp;
 
-	flag->result += ft_printspace(flag->width);
-	flag->width = 0;
-	if (*flag->variable == '-' && (flag->flag == 1 ||
-		flag->precision > flag->width))
-	{
-		ft_putchar('-');
-		tmp = flag->variable;	
-		flag->variable = ft_strdup(&flag->variable[1]);
-		free(tmp);
-	}
-	return (1);
-}
-*/
-int 	revers(char **str)
+int		revers(char **str)
 {
-	int i;
-	int n;
-	char tmp;
-	char *dup;
+	int		i;
+	int		n;
+	char	tmp;
+	char	*dup;
 
 	dup = *str;
 	i = 0;
@@ -66,12 +48,12 @@ int 	revers(char **str)
 	return (1);
 }
 
-char 	*ft_itoa_base(unsigned long long int x)
+char	*ft_itoa_base(unsigned long long int x)
 {
-	char 	*hex;
-	int 	i;
-	int 	n;
-	char 	*ptr;
+	char	*hex;
+	int		i;
+	int		n;
+	char	*ptr;
 
 	hex = "0123456789abcdef";
 	n = x > 0 ? x : (-1) * x;
